@@ -6,6 +6,7 @@ import '../components/category_cell.dart';
 import '../components/line_text_field.dart';
 import '../components/selection_text_view.dart';
 import '../components/shoes_item_cell.dart';
+import '../model/shoes_model.dart';
 import '../resources/app_color.dart';
 import 'search_location_page.dart';
 import 'shoes_detail_page.dart';
@@ -33,19 +34,19 @@ class _HomePageState extends State<HomePage> {
       "name": "Nike Jordan",
       "price": "\$300",
       "category": "Pizza, Italian",
-      "image": "assets/images/t1.jpg"
+      "image": "assets/images/i1.png"
     },
     {
       "name": "Nike Air Max",
       "price": "\$300",
       "category": "Sushi, Japan",
-      "image": "assets/images/l1.png"
+      "image": "assets/images/i2.png"
     },
     {
       "name": "Nike Air Jordan",
       "price": "\$300",
       "category": "Steak, American",
-      "image": "assets/images/t3.png"
+      "image": "assets/images/i3.png"
     }
   ];
 
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage> {
       "name": "Nike Air Jordan",
       "price": "\$300",
       "category": "Steak, American",
-      "image": "assets/images/arr12.png"
+      "image": "assets/images/i4.png"
     }
   ];
 
@@ -98,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     ),
-                    title: Column(
+                    title: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -169,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                     title: RoundTextField(
                       controller: txtSearch,
                       hitText: "Search for shoes…",
-                      leftIcon: Icon(Icons.search, color: AppColor.grey),
+                      leftIcon: const Icon(Icons.search, color: AppColor.grey),
                     ),
                   ),
                 ];
@@ -179,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: media.width * 0.20,
+                      height: media.width * 0.27,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: const EdgeInsets.symmetric(
@@ -198,25 +199,25 @@ class _HomePageState extends State<HomePage> {
                       onSeeAllTap: () {},
                     ),
                     SizedBox(
-                      height: media.width * 0.47,
+                      height: media.width * 0.54,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                          itemCount: popularArr.length,
+                          itemCount: shoes.length,
                           itemBuilder: (context, index) {
-                            var sObj = popularArr[index] as Map? ?? {};
+                            var sObj = shoes[index];
 
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ShoesDetailPage(sObj: sObj)),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           ShoesDetailPage(sObj: sObj)),
+                                // );
                               },
                               child: ShoesItemCell(
-                                sObj: sObj,
+                                shoe: sObj,
                               ),
                             );
                             // return ShoesItemCell(
@@ -233,14 +234,28 @@ class _HomePageState extends State<HomePage> {
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
-                        itemCount: arrivalArr.length,
+                        itemCount: shoes.length,
                         itemBuilder: (context, index) {
-                          var aObj = arrivalArr[index] as Map? ?? {};
+                          var aObj = shoes[index];
 
-                          return ArrivalItemRow(
-                            aObj: aObj,
+                            return GestureDetector(
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           ShoesDetailPage(sObj: sObj)),
+                                // );
+                              },
+                              child: ArrivalItemRow(
+                            shoe: aObj,
                             onTap: () {},
-                          );
+                          ),
+                            );
+                          // return ArrivalItemRow(
+                          //   shoe: aObj,
+                          //   onTap: () {},
+                          // );
                         }),
                   ],
                 ),
@@ -299,6 +314,5 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
     );
-    ;
   }
 }

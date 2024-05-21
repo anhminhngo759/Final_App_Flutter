@@ -1,9 +1,14 @@
 import 'package:final_app_flutter/resources/app_color.dart';
 import 'package:flutter/material.dart';
 
+import '../model/shoes_model.dart';
+
 class ShoesItemCell extends StatelessWidget {
-  final Map sObj;
-  const ShoesItemCell({super.key, required this.sObj});
+  final ShoesModel shoe;
+  const ShoesItemCell({
+    super.key,
+    required this.shoe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class ShoesItemCell extends StatelessWidget {
               width: media.width * 0.4,
               height: media.width * 0.25,
               child: Image.asset(
-                sObj["image"].toString(),
+                shoe.imageStr.toString(),
                 fit: BoxFit.cover,
               ),
             ),
@@ -37,37 +42,47 @@ class ShoesItemCell extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child:
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start, 
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Text(
+                "BEST SELLER",
+                style: TextStyle(
+                  color: AppColor.blue,
+                  fontSize: 15,
+                ),
+              ),
+              Text(
+                shoe.name.toString(),
+                maxLines: 1,
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                    color: AppColor.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    "BEST SELLER",
-                    style: TextStyle(
-                      color: AppColor.blue,
-                      fontSize: 15,
-                    ),
+                  Text(
+                    shoe.price.toString(),
+                    maxLines: 1,
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        color: AppColor.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
                   ),
-                Text(
-                  sObj["name"].toString(),
-                  maxLines: 1,
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(
-                      color: AppColor.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  sObj["price"].toString(),
-                  maxLines: 1,
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(
-                      color: AppColor.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700),
-                ),
+                  const Text(
+                    '\$',
+                    style: TextStyle(
+                        color: AppColor.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
             ]),
           )
         ],

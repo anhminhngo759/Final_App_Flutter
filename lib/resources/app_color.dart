@@ -12,7 +12,7 @@ class AppColor {
   static const Color pink = Colors.pink;
   static const Color orange = Colors.orange;
   static const Color bgColor = Color(0xFFEEEFF5);
-    static const Color bg = Color(0xffF2F2F3);
+  static const Color bg = Color(0xffF2F2F3);
   static const Color shadow = Colors.black26;
   static const Color tran = Colors.transparent;
 }

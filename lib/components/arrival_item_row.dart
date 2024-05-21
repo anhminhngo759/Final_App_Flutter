@@ -1,10 +1,12 @@
 import 'package:final_app_flutter/resources/app_color.dart';
 import 'package:flutter/material.dart';
 
+import '../model/shoes_model.dart';
+
 class ArrivalItemRow extends StatelessWidget {
-  final Map aObj;
+  final ShoesModel shoe;
   final VoidCallback onTap;
-  const ArrivalItemRow({super.key, required this.aObj, required this.onTap});
+  const ArrivalItemRow({super.key, required this.shoe, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ArrivalItemRow extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5), topRight: Radius.circular(5)),
               child: Image.asset(
-                aObj["image"].toString(),
+                shoe.imageStr.toString(),
                 width: double.maxFinite,
                 height: 200,
                 fit: BoxFit.fill,
@@ -47,9 +49,9 @@ class ArrivalItemRow extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        aObj["name"],
+                        shoe.name.toString(),
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: AppColor.black,
                             fontSize: 18,
                             fontWeight: FontWeight.w700),
@@ -69,68 +71,26 @@ class ArrivalItemRow extends StatelessWidget {
                       // ),
                     ],
                   ),
-                  Text(
-                    aObj["price"],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: AppColor.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        shoe.price.toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: AppColor.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      const Text(
+                        '\$',
+                        style: TextStyle(
+                            color: AppColor.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ],
                   ),
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: [
-
-                  //     Image.asset(
-                  //     "assets/img/rate.png",
-                  //     width: 10,
-                  //     height: 10,
-                  //     fit: BoxFit.cover,
-                  //   ),
-
-                  //   const SizedBox(
-                  //     width: 4,
-                  //   ),
-
-                  //   Text(
-                  //     pObj["rate"],
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(color: TColor.primary, fontSize: 11),
-                  //   ),
-                  //   const SizedBox(
-                  //     width: 8,
-                  //   ),
-                  //   Text(
-                  //     "(${pObj["rating"]} Ratings)",
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(
-                  //         color: TColor.secondaryText, fontSize: 11),
-                  //   ),
-
-                  //   const SizedBox(
-                  //     width: 8,
-                  //   ),
-
-                  //     Text(
-                  //       pObj["type"],
-                  //       textAlign: TextAlign.center,
-                  //       style: TextStyle(
-                  //           color: TColor.secondaryText, fontSize: 11),
-                  //     ),
-                  //     Text(
-                  //       " . ",
-                  //       textAlign: TextAlign.center,
-                  //       style: TextStyle(color: TColor.primary, fontSize: 11),
-                  //     ),
-                  //     Text(
-                  //       pObj["food_type"],
-                  //       textAlign: TextAlign.center,
-                  //       style: TextStyle(
-                  //           color: TColor.secondaryText, fontSize: 12),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),

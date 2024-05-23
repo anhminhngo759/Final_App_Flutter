@@ -43,7 +43,7 @@ List<ShoesModel> shoes = [
     ..imageStr = 'assets/images/i5.jpg'
     ..name = 'Nike Jordan'
     ..price = 300
-    ..quantity = 2
+    ..quantity = 4
     ..description = 'Golden browse fried chicken',
 
 ];

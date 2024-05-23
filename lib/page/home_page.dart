@@ -9,6 +9,7 @@ import '../components/shoes_item_cell.dart';
 import '../model/shoes_model.dart';
 import '../resources/app_color.dart';
 import 'search_location_page.dart';
+import 'search_result_page.dart';
 import 'shoes_detail_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -147,32 +148,31 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
 
-                      // IconButton(
-                      //   icon: Image.asset(
-                      //     "assets/images/add.png",
-                      //     width: 24,
-                      //     height: 30,
-                      //   ),
-                      //   onPressed: () {
-                      //     setState(() {
-                      //       isSelectCity = false;
-                      //     });
-                      //   },
-                      // ),
+                      
                     ],
                   ),
                   SliverAppBar(
-                    backgroundColor: AppColor.white,
-                    elevation: 0,
-                    pinned: false,
-                    floating: true,
-                    primary: false,
-                    title: RoundTextField(
-                      controller: txtSearch,
-                      hitText: "Search for shoes…",
-                      leftIcon: const Icon(Icons.search, color: AppColor.grey),
-                    ),
-                  ),
+  backgroundColor: AppColor.white,
+  elevation: 0,
+  pinned: false,
+  floating: true,
+  primary: false,
+  title: TextField(
+    controller: txtSearch,
+    decoration: InputDecoration(
+      hintText: "Search for shoes...",
+      hintStyle: TextStyle(color: AppColor.grey),
+      prefixIcon: Icon(Icons.search, color: AppColor.grey),
+    ),
+    onSubmitted: (value) {
+      // Perform the search operation and navigate to the search result page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchResultPage(searchTerm: value)),
+      );
+    },
+  ),
+),
                 ];
               },
               body: SingleChildScrollView(

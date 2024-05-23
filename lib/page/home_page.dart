@@ -209,12 +209,12 @@ class _HomePageState extends State<HomePage> {
 
                             return GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           ShoesDetailPage(sObj: sObj)),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShoesDetailPage(shoe: sObj)),
+                                );
                               },
                               child: ShoesItemCell(
                                 shoe: sObj,
@@ -238,20 +238,20 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           var aObj = shoes[index];
 
-                            return GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           ShoesDetailPage(sObj: sObj)),
-                                // );
-                              },
-                              child: ArrivalItemRow(
-                            shoe: aObj,
-                            onTap: () {},
-                          ),
-                            );
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ShoesDetailPage(shoe: aObj)),
+                              );
+                            },
+                            child: ArrivalItemRow(
+                              shoe: aObj,
+                              onTap: () {},
+                            ),
+                          );
                           // return ArrivalItemRow(
                           //   shoe: aObj,
                           //   onTap: () {},

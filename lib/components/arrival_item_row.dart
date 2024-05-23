@@ -74,19 +74,19 @@ class ArrivalItemRow extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      const Text(
+                        '\$',
+                        style: TextStyle(
+                            color: AppColor.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700),
+                      ),
                       Text(
                         shoe.price.toString(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                             color: AppColor.black,
                             fontSize: 18,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      const Text(
-                        '\$',
-                        style: TextStyle(
-                            color: AppColor.black,
-                            fontSize: 14,
                             fontWeight: FontWeight.w700),
                       ),
                     ],

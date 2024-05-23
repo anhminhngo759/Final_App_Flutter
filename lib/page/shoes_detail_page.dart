@@ -1,130 +1,331 @@
-// import 'package:final_app_flutter/resources/app_color.dart';
-// import 'package:flutter/material.dart';
+import 'package:final_app_flutter/components/app_elevent_button.dart';
+import 'package:final_app_flutter/page/my_cart_page.dart';
+import 'package:final_app_flutter/resources/app_color.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-// class ShoesDetailPage extends StatefulWidget {
-//   final Map sObj;
-//   const ShoesDetailPage({super.key, required this.sObj});
+import '../model/shoes_model.dart';
 
-//   @override
-//   State<ShoesDetailPage> createState() => _ShoesDetailPageState();
-// }
+class ShoesDetailPage extends StatefulWidget {
+  final ShoesModel shoe;
+  const ShoesDetailPage({super.key, required this.shoe});
 
-// class _ShoesDetailPageState extends State<ShoesDetailPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     var media = MediaQuery.of(context).size;
+  @override
+  State<ShoesDetailPage> createState() => _ShoesDetailPageState();
+}
 
-//     return Scaffold(
-//       backgroundColor: AppColor.bg,
-//       body: Stack(
-//         alignment: Alignment.topCenter,
-//         children: [
-//           Image.asset(
-//             widget.sObj.image.toString(),
-//             width: media.width,
-//             height: media.width * 0.8,
-//             fit: BoxFit.fill,
-//           ),
-//           Container(
-//             width: media.width,
-//             height: media.width * 0.8,
-//             decoration: const BoxDecoration(
-//               gradient: LinearGradient(
-//                   colors: [Colors.black, Colors.transparent, Colors.black],
-//                   begin: Alignment.topCenter,
-//                   end: Alignment.bottomCenter),
-//             ),
-//           ),
-//           SingleChildScrollView(
-//             child: Padding(
-//               padding: const EdgeInsets.symmetric(vertical: 20),
-//               child: Stack(
-//                 alignment: Alignment.topCenter,
-//                 children: [
-//                   Column(
-//                     children: [
-//                       SizedBox(
-//                         height: media.width - 110,
-//                       ),
-//                       Container(
-//                         decoration: BoxDecoration(
-//                             color: AppColor.white,
-//                             borderRadius: const BorderRadius.only(
-//                                 topLeft: Radius.circular(30),
-//                                 topRight: Radius.circular(30))),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             // const SizedBox(
-//                             //   height: 35,
-//                             // ),
-//                             Padding(
-//                               padding:
-//                                   const EdgeInsets.symmetric(horizontal: 25),
-//                               child: Text(
-//                                 widget.sObj["name"].toString(),
-//                                 style: TextStyle(
-//                                     color: AppColor.black,
-//                                     fontSize: 22,
-//                                     fontWeight: FontWeight.w800),
-//                               ),
-//                             ),
+class _ShoesDetailPageState extends State<ShoesDetailPage> {
+  @override
+  Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
 
-                           
-//                           ],
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(vertical: 20),
-//             child: Column(
-//               children: [
-//                 const SizedBox(
-//                   height: 35,
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.symmetric(horizontal: 20),
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       IconButton(
-//                         onPressed: () {
-//                           Navigator.pop(context);
-//                         },
-//                         icon: Image.asset(
-//                           "assets/images/back.png",
-//                           width: 20,
-//                           height: 20,
-//                           color: AppColor.white,
-//                         ),
-//                       ),
-//                       IconButton(
-//                         onPressed: () {
-//                           // Navigator.push(
-//                           //     context,
-//                           //     MaterialPageRoute(
-//                           //         builder: (context) => const MyOrderView()));
-//                         },
-//                         icon: Image.asset(
-//                           "assets/images/shopping_cart.png",
-//                           width: 25,
-//                           height: 25,
-//                           color: AppColor.white,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+    return Scaffold(
+      backgroundColor: AppColor.bg,
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Image.asset(
+            widget.shoe.imageStr.toString(),
+            width: media.width,
+            height: media.width,
+            fit: BoxFit.fill,
+          ),
+          Container(
+            width: media.width,
+            height: media.width,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.black, Colors.transparent, Colors.black],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: media.width - 60,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColor.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              child: Text(
+                                widget.shoe.name.toString(),
+                                style: const TextStyle(
+                                    color: AppColor.black,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              child: IgnorePointer(
+                                ignoring: true,
+                                child: RatingBar.builder(
+                                  initialRating: 0,
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 20,
+                                  itemPadding: const EdgeInsets.symmetric(
+                                      horizontal: 1.0),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: AppColor.red,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    print(rating);
+                                  },
+                                ),
+                              ),
+                            ),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // ),
+                            const SizedBox(height: 8),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    '\$',
+                                    style: TextStyle(
+                                        color: AppColor.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  Text(
+                                    widget.shoe.price.toString(),
+                                    maxLines: 1,
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(
+                                        color: AppColor.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  // Column(
+                                  //   children: [
+                                  //     Text(
+                                  //       widget.shoe.description.toString(),
+                                  //       style: const TextStyle(
+                                  //           color: AppColor.black,
+                                  //           fontSize: 18,
+                                  //           fontWeight: FontWeight.w700),
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              child: Text(
+                                widget.shoe.description.toString(),
+                                style: const TextStyle(
+                                    color: AppColor.grey,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    "Size :",
+                                    style: TextStyle(
+                                        color: AppColor.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        width: 30,
+                                        alignment: Alignment.center,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        decoration: BoxDecoration(
+                                          color: AppColor.white,
+                                          borderRadius:
+                                              BorderRadius.circular(26),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: AppColor.grey
+                                                  .withOpacity(0.5),
+                                              spreadRadius: 2,
+                                              blurRadius: 8,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Text(
+                                          widget.shoe.size.toString(),
+                                          style: const TextStyle(
+                                              color: AppColor.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            // SizedBox(height: 25),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 12),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        "Price",
+                                        style: TextStyle(
+                                            color: AppColor.black,
+                                            fontSize: 19,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      // const SizedBox(
+                                      //   height: 15,
+                                      // ),
+                                      Text(
+                                        "\$${widget.shoe.price.toString()}",
+                                        style: const TextStyle(
+                                            color: AppColor.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                    ],
+                                  ),
+                                  // ListView.builder(
+                                  //   itemCount: shoes.length,
+                                  //   itemBuilder: (context, index) {
+                                  //     ShoesModel shoe = shoes[index];
+                                  //     return ListTile(
+                                  //       title: Text(shoe.name),
+                                  //       onTap: () {
+                                  //         setState(() {
+                                  //           selectedIndex = index;
+                                  //         });
+                                  //       },
+                                  //     );
+                                  //   },
+                                  // ),
+
+                                  // AppEleventButton(
+                                  //   onPressed: () async {
+                                  //     await Navigator.push(
+                                  //         context,
+                                  //         MaterialPageRoute(
+                                  //           builder: (context) => const MyCartPage(shoe: null,),
+                                  //         ));
+                                  //   },
+                                  //   text: "Add to Cart",
+                                  //   colorBorder: AppColor.blue,
+                                  //   width: 150,
+                                  // ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 35,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Image.asset(
+                          "assets/images/back.png",
+                          width: 20,
+                          height: 20,
+                          color: AppColor.white,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const MyOrderView()));
+                        },
+                        icon: Image.asset(
+                          "assets/images/shopping_cart.png",
+                          width: 25,
+                          height: 25,
+                          color: AppColor.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

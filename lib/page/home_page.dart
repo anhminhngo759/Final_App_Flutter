@@ -9,6 +9,7 @@ import '../components/shoes_item_cell.dart';
 import '../model/shoes_model.dart';
 import '../resources/app_color.dart';
 import 'search_location_page.dart';
+import 'search_result_page.dart';
 import 'shoes_detail_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -162,17 +163,27 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SliverAppBar(
-                    backgroundColor: AppColor.white,
-                    elevation: 0,
-                    pinned: false,
-                    floating: true,
-                    primary: false,
-                    title: RoundTextField(
-                      controller: txtSearch,
-                      hitText: "Search for shoes…",
-                      leftIcon: const Icon(Icons.search, color: AppColor.grey),
-                    ),
-                  ),
+  backgroundColor: AppColor.white,
+  elevation: 0,
+  pinned: false,
+  floating: true,
+  primary: false,
+  title: TextField(
+    controller: txtSearch,
+    decoration: InputDecoration(
+      hintText: "Search for shoes...",
+      hintStyle: TextStyle(color: AppColor.grey),
+      prefixIcon: Icon(Icons.search, color: AppColor.grey),
+    ),
+    onSubmitted: (value) {
+      // Perform the search operation and navigate to the search result page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchResultPage(searchTerm: value)),
+      );
+    },
+  ),
+),
                 ];
               },
               body: SingleChildScrollView(
@@ -209,12 +220,12 @@ class _HomePageState extends State<HomePage> {
 
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ShoesDetailPage(shoe: sObj)),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           ShoesDetailPage(sObj: sObj)),
+                                // );
                               },
                               child: ShoesItemCell(
                                 shoe: sObj,
@@ -238,20 +249,20 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           var aObj = shoes[index];
 
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ShoesDetailPage(shoe: aObj)),
-                              );
-                            },
-                            child: ArrivalItemRow(
-                              shoe: aObj,
-                              onTap: () {},
-                            ),
-                          );
+                            return GestureDetector(
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) =>
+                                //           ShoesDetailPage(sObj: sObj)),
+                                // );
+                              },
+                              child: ArrivalItemRow(
+                            shoe: aObj,
+                            onTap: () {},
+                          ),
+                            );
                           // return ArrivalItemRow(
                           //   shoe: aObj,
                           //   onTap: () {},

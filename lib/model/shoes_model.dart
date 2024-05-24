@@ -52,3 +52,5 @@ List<ShoesModel> shoes = [
     ..quantity = 3
     ..description = 'The latest and greatest innovation to hit the streets, the Nike SB Force 58 gives you the durability of a cupsole with the flexibility of a vulcanised shoe. Made from canvas and suede and finished with perforations, the whole look is infused with heritage basketball DNA.',
 ];
+
+List<ShoesModel> cartItems = [];

@@ -41,7 +41,7 @@ class SearchResultPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ShoesDetailPage(sObj: shoe),
+                  builder: (context) => ShoesDetailPage(shoe: shoe),
                 ),
               );
             },

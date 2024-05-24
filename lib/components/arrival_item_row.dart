@@ -5,8 +5,8 @@ import '../model/shoes_model.dart';
 
 class ArrivalItemRow extends StatelessWidget {
   final ShoesModel shoe;
-  final VoidCallback onTap;
-  const ArrivalItemRow({super.key, required this.shoe, required this.onTap});
+  // final VoidCallback onTap;
+  const ArrivalItemRow({super.key, required this.shoe});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ArrivalItemRow extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        onTap: onTap,
+        // onTap: onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,31 +45,13 @@ class ArrivalItemRow extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        shoe.name.toString(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            color: AppColor.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      // const SizedBox(
-                      //   width: 10,
-                      // ),
-                      const Text(
-                        "BEST CHOICE",
-                        style: TextStyle(
-                          color: AppColor.blue,
-                          fontSize: 15,
-                        ),
-                      ),
-                      // const SizedBox(
-                      //   height: 8,
-                      // ),
-                    ],
+                  Text(
+                    shoe.name.toString(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: AppColor.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,

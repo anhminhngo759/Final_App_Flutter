@@ -147,43 +147,32 @@ class _HomePageState extends State<HomePage> {
                           height: 25,
                         ),
                       ),
-
-                      // IconButton(
-                      //   icon: Image.asset(
-                      //     "assets/images/add.png",
-                      //     width: 24,
-                      //     height: 30,
-                      //   ),
-                      //   onPressed: () {
-                      //     setState(() {
-                      //       isSelectCity = false;
-                      //     });
-                      //   },
-                      // ),
                     ],
                   ),
                   SliverAppBar(
-  backgroundColor: AppColor.white,
-  elevation: 0,
-  pinned: false,
-  floating: true,
-  primary: false,
-  title: TextField(
-    controller: txtSearch,
-    decoration: InputDecoration(
-      hintText: "Search for shoes...",
-      hintStyle: TextStyle(color: AppColor.grey),
-      prefixIcon: Icon(Icons.search, color: AppColor.grey),
-    ),
-    onSubmitted: (value) {
-      // Perform the search operation and navigate to the search result page
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SearchResultPage(searchTerm: value)),
-      );
-    },
-  ),
-),
+                    backgroundColor: AppColor.white,
+                    elevation: 0,
+                    pinned: false,
+                    floating: true,
+                    primary: false,
+                    title: TextField(
+                      controller: txtSearch,
+                      decoration: InputDecoration(
+                        hintText: "Search for shoes...",
+                        hintStyle: TextStyle(color: AppColor.grey),
+                        prefixIcon: Icon(Icons.search, color: AppColor.grey),
+                      ),
+                      onSubmitted: (value) {
+                        // Perform the search operation and navigate to the search result page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchResultPage(searchTerm: value)),
+                        );
+                      },
+                    ),
+                  ),
                 ];
               },
               body: SingleChildScrollView(
@@ -220,12 +209,12 @@ class _HomePageState extends State<HomePage> {
 
                             return GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           ShoesDetailPage(sObj: sObj)),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShoesDetailPage(shoe: sObj)),
+                                );
                               },
                               child: ShoesItemCell(
                                 shoe: sObj,
@@ -249,20 +238,20 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           var aObj = shoes[index];
 
-                            return GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           ShoesDetailPage(sObj: sObj)),
-                                // );
-                              },
-                              child: ArrivalItemRow(
-                            shoe: aObj,
-                            onTap: () {},
-                          ),
-                            );
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ShoesDetailPage(shoe: aObj)),
+                              );
+                            },
+                            child: ArrivalItemRow(
+                              shoe: aObj,
+                              // onTap: () {},
+                            ),
+                          );
                           // return ArrivalItemRow(
                           //   shoe: aObj,
                           //   onTap: () {},

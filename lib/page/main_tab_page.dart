@@ -1,7 +1,8 @@
+import 'package:final_app_flutter/page/my_cart_page.dart';
 import 'package:final_app_flutter/resources/app_color.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'my_cart_page.dart';
+
 import 'my_profile_page.dart';
 
 class MainTabPage extends StatefulWidget {

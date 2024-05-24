@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'page/home_page.dart';
 import 'page/main_tab_page.dart';
 
 void main() {

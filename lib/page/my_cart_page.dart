@@ -1,5 +1,5 @@
 import 'package:final_app_flutter/components/app_elevent_button.dart';
-import 'package:final_app_flutter/page/checkout.dart';
+import 'package:final_app_flutter/page/checkout_page.dart';
 import 'package:flutter/material.dart';
 
 import '../components/shoes_item.dart';
@@ -148,11 +148,18 @@ class _MyCartPageState extends State<MyCartPage> {
               const SizedBox(height: 15),
               AppEleventButton(
                   onPressed: () async {
+                    // await Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => CheckoutPage(
+                    //           totalPrice: totalPrice),
+                    //     ));
+
                     await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CheckoutPage(
-                              totalPrice: totalPrice),
+                          builder: (context) =>
+                              const CheckOutPage(),
                         ));
                   },
                   text: "Checkout",

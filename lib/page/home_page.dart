@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isSelectCity = false;
+  // bool isSelectCity = false;
   TextEditingController txtSearch = TextEditingController();
 
   List catArr = [
@@ -77,8 +77,7 @@ class _HomePageState extends State<HomePage> {
     var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColor.bg,
-      body: isSelectCity
-          ? NestedScrollView(
+      body: NestedScrollView(
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   SliverAppBar(
@@ -96,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onPressed: () {
                         setState(() {
-                          isSelectCity = false;
+                          // isSelectCity = false;
                         });
                       },
                     ),
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         onPressed: () {
                           setState(() {
-                            isSelectCity = false;
+                            // isSelectCity = false;
                           });
                         },
                       ),
@@ -259,60 +258,60 @@ class _HomePageState extends State<HomePage> {
                         }),
                   ],
                 ),
-              ))
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/home_page_icon.png",
-                  width: media.width,
-                  height: media.width * .25,
-                  color: AppColor.blue,
-                ),
-                SizedBox(
-                  height: media.width * 0.04,
-                ),
-                const Text(
-                  "Hi, nice to meet you!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: AppColor.grey,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  height: media.width * 0.04,
-                ),
-                const Text(
-                  "Set your location to start searching\n stores close to you",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: AppColor.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  height: media.width * 0.08,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: AppEleventButton(
-                      onPressed: () async {
-                        await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SearchLocationPage()));
-                        setState(() {
-                          isSelectCity = true;
-                        });
-                      },
-                      text: "User current location",
-                      colorBorder: AppColor.blue),
-                ),
-              ],
-            ),
+              )),
+          // : Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       Image.asset(
+          //         "assets/images/home_page_icon.png",
+          //         width: media.width,
+          //         height: media.width * .25,
+          //         color: AppColor.blue,
+          //       ),
+          //       SizedBox(
+          //         height: media.width * 0.04,
+          //       ),
+          //       const Text(
+          //         "Hi, nice to meet you!",
+          //         textAlign: TextAlign.center,
+          //         style: TextStyle(
+          //             color: AppColor.grey,
+          //             fontSize: 24,
+          //             fontWeight: FontWeight.w700),
+          //       ),
+          //       SizedBox(
+          //         height: media.width * 0.04,
+          //       ),
+          //       const Text(
+          //         "Set your location to start searching\n stores close to you",
+          //         textAlign: TextAlign.center,
+          //         style: TextStyle(
+          //             color: AppColor.grey,
+          //             fontSize: 16,
+          //             fontWeight: FontWeight.w700),
+          //       ),
+          //       SizedBox(
+          //         height: media.width * 0.08,
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          //         child: AppEleventButton(
+          //             onPressed: () async {
+          //               await Navigator.push(
+          //                   context,
+          //                   MaterialPageRoute(
+          //                       builder: (context) =>
+          //                           const SearchLocationPage()));
+          //               setState(() {
+          //                 isSelectCity = true;
+          //               });
+          //             },
+          //             text: "User current location",
+          //             colorBorder: AppColor.blue),
+          //       ),
+          //     ],
+          //   ),
     );
   }
 }
